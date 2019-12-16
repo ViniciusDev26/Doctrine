@@ -19,12 +19,25 @@ class EntityManagerFactory
             [$rootDir . '/src'],true
         );
         $connectionParams = array(
-            'dbname' => 'doctrineTreino',
+            'dbname' => 'curso_doctrine',
             'user' => 'postgres',
-            'password' => '',
+            'password' => 'asdasd',
             'host' => 'localhost',
             'driver' => 'pdo_pgsql',
         );
+
+        // $connectionParams = array(
+        //     'driver' => 'pdo_sqlite',
+        //     'path' => $rootDir . '/var/data/banco.sqlite'
+        // );
+
+        // $connectionParams = array(
+        //     'driver' => 'pdo_mysql',
+        //     'host' => 'localhost',
+        //     'dbname' => 'curso_doctrine',
+        //     'user' => 'root',
+        //     'password' => ''
+        // );
         return EntityManager::create($connectionParams, $config);
     }
 }

@@ -8,13 +8,16 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $entityManagerFactory = new EntityManagerFactory();
 $entitymanager = $entityManagerFactory->getEntityManager();
 
-$id = $argv[1];
-$aluno = $entitymanager->find(Aluno::class, $id);
+for($i = 1; $i < $argc; $i++){
+    $id = $argv[$i];
+    $aluno = $entitymanager->find(Aluno::class, $id);
 
-if(!isset($aluno)){
-    echo "Aluno Inexistente\n\n\n";
-    return;
+    if(!isset($aluno)){
+        echo "Aluno Inexistente\n\n\n";
+        return;
+    }
+
+    $entitymanager->remove($aluno);
 }
 
-$entitymanager->remove($aluno);
 $entitymanager->flush();
